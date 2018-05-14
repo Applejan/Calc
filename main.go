@@ -5,21 +5,25 @@ import (
 	. "github.com/lxn/walk/declarative"
 )
 
+//Cons is the body of concrete
 type Cons struct {
 	Height   float64
 	Width    float64
 	As0      float64
-	DegreeId int
+	DegreeID int
 	Scale    string
 	Moment   float64
 	Shear    float64
 	Torque   float64
 }
+
+//Degree is only used by Binder
 type Degree struct {
-	Id  int
+	ID  int
 	Val string
 }
 
+//Value Nothing to say
 func Value() []*Degree {
 	return []*Degree{
 		{0, "C25"},
@@ -29,7 +33,7 @@ func Value() []*Degree {
 	}
 }
 
-var concrete *Cons = new(Cons)
+var concrete = new(Cons)
 
 func main() {
 	// walk.FocusEffect, _ = walk.NewBorderGlowEffect(walk.RGB(0, 63, 255))
@@ -63,7 +67,7 @@ func main() {
 					NumberEdit{Value: Bind("Torque")},
 					Label{Text: "Degree:"},
 					ComboBox{
-						Value:         Bind("DegreeId"),
+						Value:         Bind("DegreeID"),
 						CurrentIndex:  1,
 						DisplayMember: "Val",
 						BindingMember: "Id",
